@@ -1,11 +1,169 @@
-@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
+:root {
+	--primary-color: #667eea;
+	--secondary-color: #764ba2;
+	--accent-color: #f093fb;
+	--success-color: #48bb78;
+	--warning-color: #ed8936;
+	--danger-color: #f56565;
+	--text-dark: #2d3748;
+	--text-light: #718096;
+	--bg-light: #f7fafc;
+	--border-color: #e2e8f0;
+}
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+body {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background-color: var(--bg-light);
+}
+
+.sidebar {
+	background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+	transition: all 0.3s ease;
+}
+
+.sidebar.collapsed {
+	width: 80px;
+}
+
+.main-content {
+	transition: all 0.3s ease;
+}
+
+.main-content.expanded {
+	margin-left: 80px;
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+	background: rgba(255, 255, 255, 0.1);
+	padding-left: 2rem;
+}
+
+.note-card {
+	background: white;
+	border-radius: 12px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+	transition: all 0.3s ease;
+	border: none;
+}
+
+.note-card:hover {
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+	transform: translateY(-2px);
+}
+
+.btn-primary-custom {
+	background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+	border: none;
+	border-radius: 8px;
+	padding: 8px 16px;
+	color: white;
+	transition: all 0.3s ease;
+}
+
+.btn-primary-custom:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+	color: white;
+}
+
+.btn-outline-primary-custom {
+	border: 2px solid var(--primary-color);
+	color: var(--primary-color);
+	background: transparent;
+	border-radius: 8px;
+	padding: 6px 14px;
+	transition: all 0.3s ease;
+}
+
+.btn-outline-primary-custom:hover {
+	background: var(--primary-color);
+	color: white;
+}
+
+.btn-danger-custom {
+	background: var(--danger-color);
+	border: none;
+	color: white;
+	border-radius: 8px;
+	padding: 6px 12px;
+	transition: all 0.3s ease;
+}
+
+.btn-danger-custom:hover {
+	background: #e53e3e;
+	transform: translateY(-1px);
+}
+
+.search-box {
+	background: white;
+	border: 2px solid var(--border-color);
+	border-radius: 25px;
+	padding: 12px 20px;
+	transition: all 0.3s ease;
+	width: 100%;
+	max-width: 400px;
+}
+
+.search-box:focus {
+	border-color: var(--primary-color);
+	box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+	outline: none;
+}
+
+.fab-button {
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	width: 60px;
+	height: 60px;
+	background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+	border: none;
+	border-radius: 50%;
+	color: white;
+	font-size: 1.5rem;
+	box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+	transition: all 0.3s ease;
+	z-index: 1000;
+}
+
+.fab-button:hover {
+	transform: scale(1.1);
+	box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
+}
+
+.stats-card {
+	background: white;
+	border-radius: 12px;
+	padding: 1.5rem;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+	text-align: center;
+}
+
+.stats-number {
+	font-size: 2rem;
+	font-weight: 700;
+	color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+	.sidebar {
+		transform: translateX(-100%);
+	}
+
+	.sidebar.show {
+		transform: translateX(0);
+	}
+
+	.main-content {
+		margin-left: 0;
+	}
+
+	.main-content.expanded {
+		margin-left: 0;
+	}
 }
